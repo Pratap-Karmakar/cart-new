@@ -9,7 +9,7 @@ import React from "react";
 class CartItem extends React.Component {
     // to add state
     constructor() {
-         // whenever we are using constructor in our classes we need to call super to basically call the constuructor of our parent class if we are ingeritaing
+        // whenever we are using constructor in our classes we need to call super to basically call the constuructor of our parent class if we are ingeritaing
         super();
         // state is the way to store the local data for that particular component, and state is a javascript object
         this.state = {
@@ -18,11 +18,18 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
+        // here we need to n=bind the state with increaseQuantity (this is manually)
+        // this.increaseQuantity= this.increaseQuantity.bind(this);
+        // or we can use arow function which automatically binds the state with increaseQuantity
+    }
+    // this is the function to increase the quantity, and we're gonna using this function's expression bellow in the increase quantity part of an item
+    increaseQuantity = () => {
+        console.log('this', this.state);
     }
     // so a class component to be a react component we need to give it a method
     render() {
         // here i'm doing object destructuring means im accessing the state object first here and then use them bellow in the right-block
-        const{price,title,qty}=this.state;
+        const { price, title, qty } = this.state;
 
         return (
             <div className="cart-item">
@@ -42,9 +49,23 @@ class CartItem extends React.Component {
                     <div className="cart-item-actions">
 
                         {/* Buttons */}
-                        <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992651.png" />
-                        <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
-                        <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/484/484662.png" />
+                        <img
+                            alt="increase"
+                            className="action-icons"
+                            src="https://cdn-icons-png.flaticon.com/512/992/992651.png"
+                            // here we are using the increaseQuantity function's expression
+                            onClick={this.increaseQuantity.bind(this)}
+                        />
+
+                        <img
+                            alt="decrease"
+                            className="action-icons"
+                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
+
+                        <img
+                            alt="delete"
+                            className="action-icons"
+                            src="https://cdn-icons-png.flaticon.com/512/484/484662.png" />
 
 
                     </div>
