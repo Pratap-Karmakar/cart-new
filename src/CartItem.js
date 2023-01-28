@@ -15,7 +15,7 @@ class CartItem extends React.Component {
         this.state = {
             price: "9,999",
             title: 'Phone',
-            qty: 1,
+            qty: 0,
             img: ''
         }
         // here we need to n=bind the state with increaseQuantity (this is manually)
@@ -24,7 +24,29 @@ class CartItem extends React.Component {
     }
     // this is the function to increase the quantity, and we're gonna using this function's expression bellow in the increase quantity part of an item
     increaseQuantity = () => {
-        console.log('this', this.state);
+        // to increase the quantity
+        // this.state.qty += 1;
+        // console.log('this', this.state);
+        // increaseing the quantity by using setState function which is inheritate from the React.component
+
+        //set state form 1 by object
+        // this.setState({
+        //     qty : this.state.qty + 1
+        // })
+
+        //set state form 2 by creating a callback function   if previous state required the use this
+        this.setState((prevState) => {
+            return ({
+                qty: prevState.qty + 1
+            })
+        });
+    }
+    decreaseQuantity=()=>{
+        this.setState((prevState)=>{
+            return({
+                qty: prevState.qty-1
+            })
+        })
     }
     // so a class component to be a react component we need to give it a method
     render() {
@@ -60,7 +82,8 @@ class CartItem extends React.Component {
                         <img
                             alt="decrease"
                             className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" />
+                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" 
+                            onClick={this.decreaseQuantity.bind(this)}/>
 
                         <img
                             alt="delete"
