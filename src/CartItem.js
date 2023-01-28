@@ -41,10 +41,18 @@ class CartItem extends React.Component {
             })
         });
     }
-    decreaseQuantity=()=>{
-        this.setState((prevState)=>{
-            return({
-                qty: prevState.qty-1
+    // decrease quantity callback function
+    decreaseQuantity = () => {
+
+        // if the qty is already zero then it can't be go negative that's why
+        const { qty } = this.state;
+        if (qty === 0) {
+            return;
+        }
+
+        this.setState((prevState) => {
+            return ({
+                qty: prevState.qty - 1
             })
         })
     }
@@ -82,8 +90,8 @@ class CartItem extends React.Component {
                         <img
                             alt="decrease"
                             className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png" 
-                            onClick={this.decreaseQuantity.bind(this)}/>
+                            src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                            onClick={this.decreaseQuantity.bind(this)} />
 
                         <img
                             alt="delete"
