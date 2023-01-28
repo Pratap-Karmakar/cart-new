@@ -28,3 +28,7 @@ body {
 /* .left-block{
   padding: 20px;
 } */
+.cart{
+  display: flex;
+  flex-direction: column;
+}

@@ -22,6 +22,7 @@ class CartItem extends React.Component {
         // this.increaseQuantity= this.increaseQuantity.bind(this);
         // or we can use arow function which automatically binds the state with increaseQuantity
     }
+    
     // this is the function to increase the quantity, and we're gonna using this function's expression bellow in the increase quantity part of an item
     increaseQuantity = () => {
         // to increase the quantity

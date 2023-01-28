@@ -1,5 +1,5 @@
 import React from "react";
-import CartItem from "./CartItem";
+import Cart from "./Cart";
 
 
 // functional based component
@@ -7,7 +7,7 @@ import CartItem from "./CartItem";
 function App() {
   return (
     <div className="App">
-      <CartItem />
+      <Cart />
     </div>
   );
 }
