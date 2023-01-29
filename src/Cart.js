@@ -42,9 +42,9 @@ class Cart extends React.Component {
 
 
     // increase quantity function
-    handelIncreaseQuantity = (product) =>{
+    handelIncreaseQuantity = (product) => {
         console.log('hey', product);
-        const {products}= this.state;
+        const { products } = this.state;
         const index = products.indexOf(product);
 
         products[index].qty += 1;
@@ -54,13 +54,13 @@ class Cart extends React.Component {
     }
 
     // decrease quantity function
-    handelDecreaseQuantity = (product) =>{
+    handelDecreaseQuantity = (product) => {
         console.log('hey', product);
-        const {products}= this.state;
+        const { products } = this.state;
         const index = products.indexOf(product);
 
         // if the qty is already zero then it can't be go negative that's why
-        if(products[index].qty===0){
+        if (products[index].qty === 0) {
             return;
         }
 
@@ -70,13 +70,24 @@ class Cart extends React.Component {
         })
     }
 
+    // delete product function
+    handleDeleteProduct = (id) => {
+        // object destructuring
+        const { products } = this.state;
+        const items = products.filter((item) => item.id !== id);
+
+        this.setState({
+            products: items
+        })
+    }
+
     render() {
         const { products } = this.state;
         return (
             <div className="cart">
                 {products.map((product) => {
                     // react doesn't know how to differeanciate each cart item, so giv it a key which can be anything as here it is id
-                    return <CartItem product={product} key={product.id} onIncreaseQuantity={this.handelIncreaseQuantity} onDecreaseQuantity={this.handelDecreaseQuantity}/>;
+                    return <CartItem product={product} key={product.id} onIncreaseQuantity={this.handelIncreaseQuantity} onDecreaseQuantity={this.handelDecreaseQuantity} onDeleteProduct={this.handleDeleteProduct} />;
                 })}
             </div>
         );

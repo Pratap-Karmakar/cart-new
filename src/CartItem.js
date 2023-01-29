@@ -52,8 +52,8 @@ class CartItem extends React.Component {
         // here i'm doing object destructuring means im accessing the state object first here and then use them bellow in the right-block
         const { price, title, qty } = this.props.product;
 
-        //here i'm doing object destructuring means i'm accessing the onIncreaseQuantity and onDecreaseQuantity functions from the cart.js page and then gonna use those functions in the increase and decrease buttons bellow
-        const { product, onIncreaseQuantity, onDecreaseQuantity } = this.props;
+        //here i'm doing object destructuring means i'm accessing the onIncreaseQuantity, onDecreaseQuantity and onDelete functions from the cart.js page and then gonna use those functions in the increase, decrease and delete buttons bellow
+        const { product, onIncreaseQuantity, onDecreaseQuantity, onDeleteProduct } = this.props;
 
 
         return (
@@ -96,7 +96,8 @@ class CartItem extends React.Component {
                         <img
                             alt="delete"
                             className="action-icons"
-                            src="https://cdn-icons-png.flaticon.com/512/484/484662.png" />
+                            src="https://cdn-icons-png.flaticon.com/512/484/484662.png" 
+                            onClick={()=> onDeleteProduct(product.id)}/>
 
 
                     </div>
