@@ -7,22 +7,8 @@ import React from "react";
 
 // this is a class component and we are inheritating using the extend keyword from a class called Component inside React packege
 class CartItem extends React.Component {
-    // to add state
-    constructor() {
-        // whenever we are using constructor in our classes we need to call super to basically call the constuructor of our parent class if we are ingeritaing
-        super();
-        // state is the way to store the local data for that particular component, and state is a javascript object
-        this.state = {
-            price: "9,999",
-            title: 'Phone',
-            qty: 0,
-            img: ''
-        }
-        // here we need to n=bind the state with increaseQuantity (this is manually)
-        // this.increaseQuantity= this.increaseQuantity.bind(this);
-        // or we can use arow function which automatically binds the state with increaseQuantity
-    }
     
+
     // this is the function to increase the quantity, and we're gonna using this function's expression bellow in the increase quantity part of an item
     increaseQuantity = () => {
         // to increase the quantity
@@ -59,8 +45,9 @@ class CartItem extends React.Component {
     }
     // so a class component to be a react component we need to give it a method
     render() {
+        console.log('this.props', this.props);
         // here i'm doing object destructuring means im accessing the state object first here and then use them bellow in the right-block
-        const { price, title, qty } = this.state;
+        const { price, title, qty } = this.props.product;
 
         return (
             <div className="cart-item">
@@ -73,7 +60,7 @@ class CartItem extends React.Component {
 
                     {/* we can add style by this method as well */}
                     {/* i didn't use the object destructuring in the title section insted of that i've used the normal object call by using this.state.title */}
-                    <div style={{ fontSize: 25 }}>{this.state.title}</div>
+                    <div style={{ fontSize: 25 }}>{title}</div>
                     <div style={{ color: "gray" }}>Rs: {price}</div>
                     <div style={{ color: "gray" }}>Qty: {qty}</div>
 
