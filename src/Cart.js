@@ -39,13 +39,28 @@ class Cart extends React.Component {
         // or we can use arow function which automatically binds the state with increaseQuantity
     }
 
+    // increase quantity function
+    handelIncreaseQuantity = (product) =>{
+        console.log('hey', product);
+        const {products}= this.state;
+        const index = products.indexOf(product);
+
+        products[index].qty += 1;
+        this.setState({
+            products
+        })
+    }
+    handelDecreaseQuantity = (product) =>{
+        console.log('hey',product);
+    }
+
     render() {
         const { products } = this.state;
         return (
             <div className="cart">
                 {products.map((product) => {
                     // react doesn't know how to differeanciate each cart item, so giv it a key which can be anything as here it is id
-                    return <CartItem product={product} key={product.id} />;
+                    return <CartItem product={product} key={product.id} onIncreaseQuantity={this.handelIncreaseQuantity}/>;
                 })}
             </div>
         );
