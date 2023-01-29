@@ -7,7 +7,7 @@ import React from "react";
 
 // this is a class component and we are inheritating using the extend keyword from a class called Component inside React packege
 class CartItem extends React.Component {
-    
+
 
     // as we've not using this in the cart that's why this increase and decrease quantity functions are not working thus i've removed this code
 
@@ -48,12 +48,17 @@ class CartItem extends React.Component {
     // so a class component to be a react component we need to give it a method
     render() {
         console.log('this.props', this.props);
+
         // here i'm doing object destructuring means im accessing the state object first here and then use them bellow in the right-block
         const { price, title, qty } = this.props.product;
 
+        //here i'm doing object destructuring means i'm accessing the onIncreaseQuantity and onDecreaseQuantity functions from the cart.js page and then gonna use those functions in the increase and decrease buttons bellow
+        const { product, onIncreaseQuantity, onDecreaseQuantity } = this.props;
+
+
         return (
             <div className="cart-item">
-                    
+
                 <div className="left-block">
                     {/* this is how we can add style by using style property and then passing the object which is written bellow */}
                     <img style={style.image} />
@@ -69,19 +74,24 @@ class CartItem extends React.Component {
                     <div className="cart-item-actions">
 
                         {/* Buttons */}
+
+                        {/* Decrease Quantity */}
+
                         <img
                             alt="increase"
                             className="action-icons"
                             src="https://cdn-icons-png.flaticon.com/512/992/992651.png"
                             // here we are using the increaseQuantity function's expression
-                            onClick={()=>this.props.onIncreaseQuantity(this.props.product)}
+                            onClick={() => onIncreaseQuantity(product)}
                         />
+
+                        {/* Increase Quantity */}
 
                         <img
                             alt="decrease"
                             className="action-icons"
                             src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
-                            onClick={this.decreaseQuantity} />
+                            onClick={() => onDecreaseQuantity(product)} />
 
                         <img
                             alt="delete"
