@@ -20,7 +20,7 @@ const CartItem = (props) => {
 
             <div className="left-block">
                 {/* this is how we can add style by using style property and then passing the object which is written bellow */}
-                <img style={style.image} />
+                <img style={style.image} src={product.img} />
             </div>
             <div className="right-block">
 
